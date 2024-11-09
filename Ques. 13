@@ -1,0 +1,66 @@
+Write a C program to calculate the commission of a salesman considering three regions X, Y, and Z depending on the sales amount as follows:
+
+For area code 'X':
+Sales amount < 5000: Commission = 12%
+Sales amount ≥ 5000: Commission = 15%
+
+For area code 'Y':
+Sales amount < 7000: Commission = 12%
+Sales amount ≥ 7000: Commission = 15%
+
+For area code 'Z':
+Sales amount < 6500: Commission = 12%
+Sales amount ≥ 6500: Commission = 15%
+----------------------------------------------------------------------------------------------------------
+
+
+#include <stdio.h>
+int main() {
+    char area_code;
+    float sales_amount, commission;
+
+    // Input area code and sales amount
+    printf("Enter area code (X, Y, or Z): ");
+    scanf(" %c", &area_code);
+    printf("Enter sales amount: ");
+    scanf("%f", &sales_amount);
+
+    // Calculate commission based on area code and sales amount
+    if (area_code == 'X' || area_code == 'x') {
+        if (sales_amount < 5000) {
+            commission = sales_amount * 0.12;
+        } else {
+            commission = sales_amount * 0.15;
+        }
+    } else if (area_code == 'Y' || area_code == 'y') {
+        if (sales_amount < 7000) {
+            commission = sales_amount * 0.12;
+        } else {
+            commission = sales_amount * 0.15;
+        }
+    } else if (area_code == 'Z' || area_code == 'z') {
+        if (sales_amount < 6500) {
+            commission = sales_amount * 0.12;
+        } else {
+            commission = sales_amount * 0.15;
+        }
+    } else {
+        printf("Invalid area code.\n");
+        return 1; // Exit with error
+    }
+
+    // Output the commission
+    printf("The commission is: %.2f\n", commission);
+
+    return 0;
+}
+
+
+OUTPUT:-
+Enter area code (X, Y, or Z): X
+Enter sales amount: 6000
+The commission is: 900.00
+
+
+
+

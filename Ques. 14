@@ -1,0 +1,40 @@
+Write a program that takes x-y coordinates of a point and print a message telling either an axis on which the point lies or the
+quadrant in which it is found. ------------------------------------------
+
+
+
+#include <stdio.h>
+int main() {
+    float x, y;
+
+    // Input x and y coordinates
+    printf("Enter the x-coordinate: ");
+    scanf("%f", &x);
+    printf("Enter the y-coordinate: ");
+    scanf("%f", &y);
+
+    // Determine the location of the point
+    if (x == 0 && y == 0) {
+        printf("The point is at the origin.\n");
+    } else if (x == 0) {
+        printf("The point lies on the Y-axis.\n");
+    } else if (y == 0) {
+        printf("The point lies on the X-axis.\n");
+    } else if (x > 0 && y > 0) {
+        printf("The point is in Quadrant I.\n");
+    } else if (x < 0 && y > 0) {
+        printf("The point is in Quadrant II.\n");
+    } else if (x < 0 && y < 0) {
+        printf("The point is in Quadrant III.\n");
+    } else if (x > 0 && y < 0) {
+        printf("The point is in Quadrant IV.\n");
+    }
+
+    return 0;
+}
+
+
+OUTPUT:-
+Enter the x-coordinate: 5
+Enter the y-coordinate: -3
+The point is in Quadrant IV.

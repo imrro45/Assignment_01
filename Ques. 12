@@ -1,0 +1,79 @@
+ The telephone company has the following rate structure for long-distance calls:
+
+(1) The regular rate for a call is 0.40 per minute.
+(2) Any call made after 6:00 PM (1800 hours) but before 8:00 AM (0800 hours) is discounted 50%.
+(3) Any call longer than 60 minutes receives a 15% discount.
+(4) All calls are subject to a 4% tax on the cost after discounts.
+write a c program that take start time for a call based on 24-hour clock and the length of the call in minutes and display the gross cost (before and discount) 
+should be display after net cost (after discount). ---------------------------------------------------------------------
+
+
+#include <stdio.h>
+int main() {
+    int start_time, duration;
+    float rate_per_minute = 0.40;
+    float gross_cost, net_cost, discount = 0.0, tax;
+
+    // Input start time and duration
+    printf("Enter the start time of the call in 24-hour format (e.g., 1300 for 1:00 PM): ");
+    scanf("%d", &start_time);
+
+    printf("Enter the duration of the call in minutes: ");
+    scanf("%d", &duration);
+
+    // Calculate the gross cost (before any discounts)
+    gross_cost = rate_per_minute * duration;
+
+    // Initialize net cost to gross cost initially
+    net_cost = gross_cost;
+
+    // Apply time-based discount (50% if call is made after 6:00 PM or before 8:00 AM)
+    if ((start_time >= 1800 && start_time <= 2359) || (start_time >= 0 && start_time < 800)) {
+        discount += 0.50 * net_cost;
+    }
+
+    // Apply duration-based discount (15% if call duration is more than 60 minutes)
+    if (duration > 60) {
+        discount += 0.15 * (net_cost - discount); // Apply 15% on the remaining amount after previous discount
+    }
+
+    // Subtract total discount from gross cost to get the net cost
+    net_cost -= discount;
+
+    // Calculate tax (4% on the discounted cost)
+    tax = 0.04 * net_cost;
+
+    // Add tax to net cost to get the final cost
+    net_cost += tax;
+
+    // Display the gross cost, discount applied, tax applied, and final net cost
+    printf("Gross cost (before discount): %.2f\n", gross_cost);
+    printf("Total discount applied: %.2f\n", discount);
+    printf("Tax applied (4%%): %.2f\n", tax);
+    printf("Net cost (after discount and tax): %.2f\n", net_cost);
+
+    return 0;
+}
+
+
+OUTPUT :-
+Example 1:
+Input:
+Enter the start time of the call in 24-hour format (e.g., 1300 for 1:00 PM): 1900
+Enter the duration of the call in minutes: 30
+Output:
+Gross cost (before discount): 12.00
+Total discount applied: 6.00
+Tax applied (4%): 0.24
+Net cost (after discount and tax): 6.24
+
+Example 2:
+Input:
+Enter the start time of the call in 24-hour format (e.g., 1300 for 1:00 PM): 1200
+Enter the duration of the call in minutes: 70
+Output:
+Gross cost (before discount): 28.00
+Total discount applied: 4.20
+Tax applied (4%): 0.95
+Net cost (after discount and tax): 24.75
+

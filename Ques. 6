@@ -1,0 +1,25 @@
+Write a C program to check whether a given number is even or odd without using modulus and division operator. ------------------------------------
+
+#include <stdio.h>
+int main() {
+    int num;
+
+    // Input an integer
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+
+    // Check if the number is even or odd using bitwise AND
+    if ((num & 1) == 0) {
+        printf("%d is even.\n", num);
+    } else {
+        printf("%d is odd.\n", num);
+    }
+
+    return 0;
+}
+
+
+
+OUTPUT :- 
+Enter an integer: 7
+7 is odd.

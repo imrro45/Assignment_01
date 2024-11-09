@@ -1,0 +1,26 @@
+Write a program to find that the accepted number is positive, negative, or zero, using a ternary operator. -----------------------------------
+
+#include <stdio.h>
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Using a ternary operator to check if the number is positive, negative, or zero
+    (num > 0) ? printf("The number is positive.\n") :
+    (num < 0) ? printf("The number is negative.\n") :
+    printf("The number is zero.\n");
+
+    return 0;
+}
+
+
+OUTPUT:-
+Input: Enter a number: 5
+Output: The number is positive.
+
+Input: Enter a number: -3
+Output: The number is negative.
+
+Input: Enter a number: 0
+Output: The number is zero.

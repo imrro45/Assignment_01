@@ -1,0 +1,54 @@
+Write a C program that takes as input the numerators and denominators of two fractions. Your program should display the numerator and denominator of the 
+fraction that represents the product of two fractions. Also, display the present equivalent of the resulting product. ----------------------------------------------
+
+#include <stdio.h>
+// Function to calculate the GCD for simplifying the fraction
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int main() {
+    int num1, denom1, num2, denom2;
+    int result_num, result_denom;
+
+    printf("Enter numerator and denominator of the first fraction: ");
+    scanf("%d %d", &num1, &denom1);
+
+    printf("Enter numerator and denominator of the second fraction: ");
+    scanf("%d %d", &num2, &denom2);
+
+    // Multiply fractions: (num1/denom1) * (num2/denom2) = (num1 * num2) / (denom1 * denom2)
+    result_num = num1 * num2;
+    result_denom = denom1 * denom2;
+
+    // Simplify the result by finding the GCD
+    int gcd_value = gcd(result_num, result_denom);
+    result_num /= gcd_value;
+    result_denom /= gcd_value;
+
+    printf("The product of the two fractions is: %d/%d\n", result_num, result_denom);
+
+    return 0;
+}
+
+
+OUTPUT:-
+Example 1:
+Input:
+Enter numerator and denominator of the first fraction: 3 4
+Enter numerator and denominator of the second fraction: 2 5
+Output:
+The product of the two fractions is: 3/10
+
+Example 2:
+Input:
+Enter numerator and denominator of the first fraction: 5 6
+Enter numerator and denominator of the second fraction: 2 3
+Output:
+The product of the two fractions is: 5/9
+

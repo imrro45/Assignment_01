@@ -1,0 +1,88 @@
+Write a program that will calculate and print bills for a city power company. The rates vary depending on whether the use is residential, commercial, 
+or industrial. The use code 'R' means residential, a code 'C' means commercial, and code 'I' means industrial use. Any other code should be treated as an error. 
+The rate is computed as follows:  
+
+'R' (Residential): 6.00 Rs plus 0.052 Rs per kWh used
+'C' (Commercial): 60.00 Rs for the first 1000 kWh and 0.045 Rs for each additional kWh
+'I' (Industrial):
+Peak hours: 76.00 Rs for the first 1000 kWh and 0.065 Rs for each additional kWh
+Off-peak hours: 40.00 Rs for the first 1000 kWh and 0.028 Rs for each additional kWh
+The program should prompt the user to enter an integer account number, the use code, and the necessary consumption figure in whole numbers of kilowatt-hours. 
+It should then display the amount due from the user.
+------------------------------------------------------------------------------------------------------------------
+
+
+#include <stdio.h>
+int main() {
+    int account_number;
+    char use_code;
+    int kwh_used;
+    float bill_amount;
+
+    // Input account number, use code, and kWh used
+    printf("Enter account number: ");
+    scanf("%d", &account_number);
+    printf("Enter use code (R for Residential, C for Commercial, I for Industrial): ");
+    scanf(" %c", &use_code);
+    printf("Enter kilowatt-hours used: ");
+    scanf("%d", &kwh_used);
+
+    // Calculate bill based on use code
+    if (use_code == 'R' || use_code == 'r') {
+        // Residential
+        bill_amount = 6.00 + (kwh_used * 0.052);
+    } 
+    else if (use_code == 'C' || use_code == 'c') {
+        // Commercial
+        if (kwh_used <= 1000) {
+            bill_amount = 60.00;
+        } else {
+            bill_amount = 60.00 + ((kwh_used - 1000) * 0.045);
+        }
+    } 
+    else if (use_code == 'I' || use_code == 'i') {
+        // Industrial
+        char time_of_use;
+        printf("Enter time of use (P for Peak hours, O for Off-peak hours): ");
+        scanf(" %c", &time_of_use);
+
+        if (time_of_use == 'P' || time_of_use == 'p') {
+            // Peak hours
+            if (kwh_used <= 1000) {
+                bill_amount = 76.00;
+            } else {
+                bill_amount = 76.00 + ((kwh_used - 1000) * 0.065);
+            }
+        } 
+        else if (time_of_use == 'O' || time_of_use == 'o') {
+            // Off-peak hours
+            if (kwh_used <= 1000) {
+                bill_amount = 40.00;
+            } else {
+                bill_amount = 40.00 + ((kwh_used - 1000) * 0.028);
+            }
+        } else {
+            printf("Invalid time of use code.\n");
+            return 1; // Exit with error
+        }
+    } 
+    else {
+        printf("Invalid use code.\n");
+        return 1; // Exit with error
+    }
+
+    // Display the bill amount
+    printf("Account Number: %d\n", account_number);
+    printf("Total Amount Due: Rs %.2f\n", bill_amount);
+
+    return 0;
+}
+
+
+OUTPUT:-
+Enter account number: 12345
+Enter use code (R for Residential, C for Commercial, I for Industrial): C
+Enter kilowatt-hours used: 1200
+Account Number: 12345
+Total Amount Due: Rs 69.00
+

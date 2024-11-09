@@ -1,0 +1,35 @@
+Write a C program to evaluate the following expressions and display their results:
+ (a) x^2+2x^3(2x)
+(b) x+y^2+z^3
+Where x,𝑦,𝑧 are integers.  -----------------------------------------------------------
+
+
+#include <stdio.h>
+int main() {
+    int x, y, z;
+    int expression_a, expression_b;
+
+    printf("Enter value for x: ");
+    scanf("%d", &x);
+    printf("Enter value for y: ");
+    scanf("%d", &y);
+    printf("Enter value for z: ");
+    scanf("%d", &z);
+
+    expression_a = (x * x) + (2 * (x * x * x) * (2 * x)); // x^2 + 2x^3(2x)
+    expression_b = x + (y * y) + (z * z * z); // x + y^2 + z^3
+
+    printf("Result of expression (a): %d\n", expression_a);
+    printf("Result of expression (b): %d\n", expression_b);
+
+    return 0;
+}
+
+
+OUTPUT :-
+Enter value for x: 2
+Enter value for y: 3
+Enter value for z: 4
+Result of expression (a): 68
+Result of expression (b): 75
+

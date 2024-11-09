@@ -1,0 +1,45 @@
+Write a C program to input an amount from the user and print the minimum number of notes (500, 100, 50, 20, 10, 5, 2, 1) required for the amount. -------------------------------
+
+#include <stdio.h>
+int main() {
+    int amount;
+
+    // Prompt user to input the amount
+    printf("Enter the amount: ");
+    scanf("%d", &amount);
+
+    // Calculate the minimum number of notes
+    int notes_500 = amount / 500;
+    amount %= 500;
+    int notes_100 = amount / 100;
+    amount %= 100;
+    int notes_50 = amount / 50;
+    amount %= 50;
+    int notes_20 = amount / 20;
+    amount %= 20;
+    int notes_10 = amount / 10;
+    amount %= 10;
+    int notes_5 = amount / 5;
+    amount %= 5;
+    int notes_2 = amount / 2;
+    amount %= 2;
+    int notes_1 = amount;
+
+    // Display the results
+    printf("500: %d\n100: %d\n50: %d\n20: %d\n10: %d\n5: %d\n2: %d\n1: %d\n",
+           notes_500, notes_100, notes_50, notes_20, notes_10, notes_5, notes_2, notes_1);
+
+    return 0;
+}
+
+
+OUTPUT:-
+Enter the amount: 1268
+500: 2
+100: 2
+50: 1
+20: 0
+10: 1
+5: 1
+2: 1
+1: 1

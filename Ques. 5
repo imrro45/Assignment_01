@@ -1,0 +1,38 @@
+Write a C program to print the given 3 integers in ascending order using if and else. -----------------------------------------
+
+#include <stdio.h>
+int main() {
+    int a, b, c;
+
+    // Input three integers
+    printf("Enter three integers: ");
+    scanf("%d %d %d", &a, &b, &c);
+
+    // Sorting and printing in ascending order using if-else
+    if (a <= b && a <= c) {
+        if (b <= c) {
+            printf("Ascending order: %d, %d, %d\n", a, b, c);
+        } else {
+            printf("Ascending order: %d, %d, %d\n", a, c, b);
+        }
+    } else if (b <= a && b <= c) {
+        if (a <= c) {
+            printf("Ascending order: %d, %d, %d\n", b, a, c);
+        } else {
+            printf("Ascending order: %d, %d, %d\n", b, c, a);
+        }
+    } else {
+        if (a <= b) {
+            printf("Ascending order: %d, %d, %d\n", c, a, b);
+        } else {
+            printf("Ascending order: %d, %d, %d\n", c, b, a);
+        }
+    }
+
+    return 0;
+}
+
+
+OUTPUT :-
+Enter three integers: 3 1 2
+Ascending order: 1, 2, 3
